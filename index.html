@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TETR · AI Fellowship Program</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green:     #009C50;
+  --dg:        #004822;
+  --pink:      #F8769A;
+  --yellow:    #F0C300;
+  --cyan:      #4CC9E9;
+  --purple:    #9C2AB5;
+}
+
+body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #fff; line-height: 1; }
+
+/* ── grid backgrounds ── */
+.grid-dark {
+  background-color: var(--dg);
+  background-image: linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);
+  background-size: 40px 40px;
+}
+.grid-light {
+  background-color: #fff;
+  background-image: linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── scattered squares ── */
+.sq { position: absolute; border-radius: 2px; }
+
+/* ── shared ── */
+.serif-italic { font-family:'Playfair Display',serif; font-style:italic; font-weight:400; }
+.rule { width:48px; height:3px; background:currentColor; margin:18px 0 28px; }
+
+
+/* ══════════════════════════════════════
+   1. COVER
+══════════════════════════════════════ */
+.cover {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  min-height: 100vh; padding: 0;
+}
+
+.cover-top {
+  padding: 28px 40px 20px;
+  display: flex; justify-content: flex-end;
+  flex-shrink: 0; position: relative; z-index: 2;
+}
+
+.tetr-logo {
+  background: white; padding: 10px 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+.cover-img-wrap { margin: 0 40px; flex-shrink: 0; overflow: hidden; position: relative; z-index: 2; }
+.cover-img-wrap img { width: 100%; height: 440px; object-fit: cover; object-position: center; display: block; }
+
+.cover-bottom { padding: 40px 40px 52px; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; position: relative; z-index: 2; }
+
+.cover-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 30px; color: var(--yellow);
+  line-height: 1.6; margin-bottom: 20px;
+}
+
+.cover-desc { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 560px; }
+
+
+/* ══════════════════════════════════════
+   2. PROBLEM
+══════════════════════════════════════ */
+.problem { padding: 72px 64px; position: relative; overflow: hidden; }
+
+.problem-top-label { font-size: 28px; font-weight: 700; color: #1A1A1A; margin-bottom: 2px; }
+
+.problem-h {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 52px;
+  color: #1A1A1A; line-height: 1.08;
+}
+
+.problem-h .pixel {
+  font-family: 'Press Start 2P', monospace;
+  font-style: normal; font-size: 26px;
+  color: var(--green); vertical-align: middle;
+  display: inline-block; margin: 0 4px;
+}
+
+.problem-body { font-size: 16px; line-height: 1.75; color: #555; max-width: 700px; margin-bottom: 14px; }
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 44px; }
+
+.stat-box { padding: 24px 22px; }
+.sn {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px; font-weight: 400;
+  line-height: 1; margin-bottom: 12px;
+  color: white; opacity: 0.75;
+}
+.st { font-size: 17px; line-height: 1.7; color: white; font-style: italic; }
+.st strong { font-style: normal; }
+
+.sb1 { background: var(--dg); }
+.sb2 { background: var(--yellow); }
+.sb2 .sn, .sb2 .st { color: var(--dg); opacity: 1; }
+.sb3 { background: var(--purple); }
+.sb4 { background: var(--cyan); }
+.sb4 .sn { color: var(--dg); opacity: 0.8; }
+.sb4 .st { color: var(--dg); opacity: 0.85; }
+
+
+/* ══════════════════════════════════════
+   3. DEMAND IS CLEAR
+══════════════════════════════════════ */
+.demand { padding: 56px 64px 40px; position: relative; overflow: hidden; }
+
+.demand-h {
+  font-size: 56px; font-weight: 700;
+  color: white; line-height: 1.12;
+  max-width: 700px; margin-bottom: 0;
+}
+
+.demand-h .hi { font-family:'Playfair Display',serif; font-style:italic; font-weight:400; color: var(--yellow); }
+.demand-rule { width: 48px; height: 3px; background: rgba(255,255,255,0.25); margin: 24px 0; }
+.demand-sub { font-size: 17px; color: rgba(255,255,255,0.5); }
+
+
+/* ══════════════════════════════════════
+   4. JD TABLE
+══════════════════════════════════════ */
+.jd-sec { padding: 0 64px 64px; position: relative; overflow: hidden; }
+
+.jd-tbl { width:100%; border-collapse:collapse; }
+.jd-block {
+  background: #021a0a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.jd-thead tr {
+  display: grid; grid-template-columns: 160px 160px 1fr 1fr;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.jd-th { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); }
+
+.jd-tbody tr {
+  display: grid; grid-template-columns: 160px 160px 1fr 1fr;
+  padding: 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  align-items: start;
+}
+.jd-tbody tr:last-child { border-bottom: none; }
+.jd-tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.jd-td { padding-right: 18px; }
+.co-wrap { display:flex; align-items:center; gap:11px; }
+.co-logo {
+  width:34px; height:34px; border-radius:9px;
+  object-fit:contain; background:rgba(255,255,255,0.07);
+  padding:5px; border:1px solid rgba(255,255,255,0.1); flex-shrink:0;
+}
+.co-name { font-size:14px; font-weight:700; color:white; }
+.role-t { font-size:13px; font-weight:600; color:rgba(255,255,255,0.85); margin-bottom:5px; }
+.role-d { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.6; }
+.role-l { font-size:10px; color:rgba(255,255,255,0.28); margin-top:4px; }
+
+.pills { display:flex; flex-wrap:wrap; gap:6px; }
+.pill { border-radius:100px; padding:4px 12px; font-size:11px; font-weight:600; border:1.5px solid; white-space:nowrap; }
+.pg { color:#7AE4A8; border-color:rgba(122,228,168,.35); background:rgba(122,228,168,.08); }
+.pc { color:#7DD6F0; border-color:rgba(125,214,240,.35); background:rgba(125,214,240,.08); }
+.pp { color:#C57FE0; border-color:rgba(197,127,224,.35); background:rgba(197,127,224,.08); }
+.py { color:#F5CF55; border-color:rgba(245,207,85,.35);  background:rgba(245,207,85,.08); }
+.ppk{ color:#FAA0B8; border-color:rgba(250,160,184,.35); background:rgba(250,160,184,.08); }
+
+
+/* ══════════════════════════════════════
+   5. INTRODUCING
+══════════════════════════════════════ */
+.intro { padding: 72px 64px; position: relative; overflow: hidden; }
+
+.intro-h1 { font-size: 42px; font-weight: 700; color: var(--dg); line-height: 1.1; }
+.intro-h2 { display: flex; align-items: baseline; gap: 14px; margin-top: 2px; }
+.intro-pixel { font-family:'Press Start 2P',monospace; font-size:26px; color:var(--green); }
+.intro-serif { font-family:'Playfair Display',serif; font-style:italic; font-size:46px; color:var(--green); line-height:1; }
+
+.intro-rule { width:48px; height:3px; background:var(--dg); margin:20px 0 24px; }
+.intro-body { font-size:16px; line-height:1.75; color:#555; max-width:620px; margin-bottom:40px; }
+.intro-body strong { color:var(--dg); font-weight:600; }
+
+.logos-heading { font-size:18px; font-weight:700; color:var(--dg); margin-bottom:18px; }
+.logos-row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:44px; }
+
+.logo-circle {
+  width:66px; height:66px; border-radius:50%;
+  border:1.5px solid rgba(0,72,34,0.12);
+  display:flex; align-items:center; justify-content:center;
+  background:white; overflow:hidden; flex-shrink:0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.logo-circle img { width:40px; height:40px; object-fit:contain; }
+.logo-circle .logo-fb { font-size:10px; font-weight:700; color:var(--dg); text-align:center; line-height:1.3; padding:4px; }
+
+.cities-heading { font-size:18px; font-weight:700; color:var(--dg); margin-bottom:18px; }
+.cities-strip { display:grid; grid-template-columns:repeat(4,1fr); border-radius:14px; overflow:hidden; }
+
+.city { position:relative; height:230px; overflow:hidden; }
+.city img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.65) saturate(1.1); transition: filter .3s; }
+.city:hover img { filter:brightness(0.75) saturate(1.2); }
+.city-name { position:absolute; bottom:14px; left:16px; font-size:17px; font-weight:700; color:white; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
+
+
+/* ══════════════════════════════════════
+   6. STRUCTURED PATH
+══════════════════════════════════════ */
+.path { padding: 72px 64px; position: relative; overflow: hidden; }
+
+.path-h { font-size:40px; font-weight:700; color:#1A1A1A; line-height:1.1; }
+.path-h .hi { font-family:'Playfair Display',serif; font-style:italic; font-weight:400; color:var(--green); }
+.path-rule { width:48px; height:3px; background:#1A1A1A; margin:18px 0 20px; }
+.path-sub { font-size:16px; color:#666; line-height:1.65; max-width:580px; margin-bottom:56px; }
+
+.tl-outer { position:relative; }
+
+.tl-nums { display:grid; grid-template-columns:repeat(5,1fr); margin-bottom:2px; }
+.tl-num-col { padding:0 6px; }
+.tl-n { font-size:22px; font-weight:300; color:#C0C0C0; line-height:1; margin-bottom:14px; }
+
+.tl-line-row {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  align-items:center; position:relative; margin-bottom:22px;
+}
+.tl-line-row::before {
+  content:''; position:absolute; top:50%; left:20px; right:20px;
+  height:2px; background:var(--dg); transform:translateY(-50%);
+}
+.tl-dot-col { display:flex; justify-content:center; position:relative; z-index:1; }
+.tl-dot {
+  width:14px; height:14px; border-radius:50%;
+  background:var(--dg); border:3px solid white;
+  box-shadow:0 0 0 2px var(--dg);
+}
+
+.tl-texts { display:grid; grid-template-columns:repeat(5,1fr); }
+.tl-text { padding:0 6px; font-size:13px; color:#555; line-height:1.65; }
+.tl-text strong { color:var(--dg); font-weight:600; }
+
+
+/* ══════════════════════════════════════
+   7. GENAI TOOLS
+══════════════════════════════════════ */
+.tools { background:#0D1F13; padding:72px 64px; }
+.tools-eyebrow { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--yellow); margin-bottom:10px; }
+.tools-h { font-size:36px; font-weight:700; color:white; line-height:1.2; margin-bottom:48px; }
+
+.tools-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.tool-cat { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:28px 22px; }
+.tc-hd { display:flex; align-items:center; gap:9px; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,.08); }
+.tc-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+.tc-lbl { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.45); }
+.tool-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.ttag { border-radius:100px; padding:4px 12px; font-size:11px; font-weight:500; border:1.5px solid; white-space:nowrap; }
+.tg  { color:#7AE4A8; border-color:rgba(122,228,168,.3); background:rgba(122,228,168,.07); }
+.tp  { color:#C57FE0; border-color:rgba(197,127,224,.3); background:rgba(197,127,224,.07); }
+.tc  { color:#7DD6F0; border-color:rgba(125,214,240,.3); background:rgba(125,214,240,.07); }
+.tpk { color:#FAA0B8; border-color:rgba(250,160,184,.3); background:rgba(250,160,184,.07); }
+
+
+/* ══════════════════════════════════════
+   8. CURRICULUM PHILOSOPHY
+══════════════════════════════════════ */
+.curric { padding: 56px 64px 64px; position: relative; overflow: hidden; }
+.curric-h { font-size: 40px; font-weight: 700; color: var(--dg); line-height: 1.15; max-width: 700px; margin-bottom: 36px; }
+
+.curric-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 12px; overflow: hidden; }
+
+.curric-block { padding: 36px 32px; }
+.cb1 { background: var(--green); }
+.cb2 { background: var(--yellow); }
+.cb3 { background: var(--dg); border: 1px solid rgba(255,255,255,0.15); }
+
+.cb-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; opacity: 0.4; margin-bottom: 16px; line-height: 1; }
+.cb1 .cb-num, .cb3 .cb-num { color: white; }
+.cb2 .cb-num { color: var(--dg); }
+
+.curric-title { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; }
+.cb1 .curric-title, .cb3 .curric-title { color: white; }
+.cb2 .curric-title { color: var(--dg); }
+
+.curric-body { font-size: 14px; line-height: 1.7; }
+.cb1 .curric-body, .cb3 .curric-body { color: rgba(255,255,255,0.7); }
+.cb2 .curric-body { color: rgba(0,40,20,0.75); }
+
+
+/* ══════════════════════════════════════
+   9. STREAMS
+══════════════════════════════════════ */
+.streams { padding: 56px 64px 64px; }
+.streams-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan); margin-bottom: 14px; }
+.streams-h { font-size: 44px; font-weight: 700; color: white; line-height: 1.1; margin-bottom: 8px; }
+.streams-sub { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 36px; max-width: 480px; line-height: 1.6; }
+
+.streams-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+}
+
+.stream-card {
+  padding: 26px 24px;
+  background: #021a0a;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+.stream-card:hover { background: #010f06; }
+
+.stream-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px; color: var(--cyan);
+}
+.stream-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin-bottom: 8px; }
+.stream-title { font-size: 17px; font-weight: 700; color: white; margin-bottom: 10px; line-height: 1.3; }
+.stream-desc { font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.65; }
+
+
+/* ══════════════════════════════════════
+   10. INDUSTRY PARTNERS
+══════════════════════════════════════ */
+.partners { padding: 52px 64px 56px; position: relative; overflow: hidden; }
+
+.partners-h {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 64px; color: var(--green);
+  line-height: 1.05; margin-bottom: 0;
+}
+
+.partners-rule { width: 64px; height: 3px; background: #1A1A1A; margin: 16px 0 22px; }
+
+.partners-intro { font-size: 17px; color: #444; line-height: 1.75; max-width: 700px; margin-bottom: 40px; }
+
+.partners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; }
+
+.partner-benefit { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.pb-top { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 12px; }
+.pb-icon { flex-shrink: 0; width: 48px; height: 48px; color: var(--dg); }
+.pb-title { font-size: 20px; font-weight: 700; color: #1A1A1A; line-height: 1.2; }
+.pb-body { font-size: 14px; color: #555; line-height: 1.75; max-width: 320px; }
+
+
+/* ══════════════════════════════════════
+   11. CLOSING
+══════════════════════════════════════ */
+.closing {
+  padding:80px 64px;
+  display:grid; grid-template-columns:1.2fr 1fr;
+  gap:60px; align-items:center;
+  position:relative; overflow:hidden;
+}
+.closing::before {
+  content:''; position:absolute; width:420px; height:420px; border-radius:50%;
+  background:rgba(0,156,80,.14); bottom:-160px; right:-100px; pointer-events:none;
+}
+.closing-title { font-size:40px; font-weight:700; color:white; line-height:1.15; margin-bottom:20px; }
+.closing-sub { font-size:16px; color:rgba(255,255,255,.5); line-height:1.75; }
+.closing-r { display:flex; flex-direction:column; gap:20px; position:relative; z-index:1; }
+.cta-label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.3); }
+.apply-btn {
+  display:inline-block; background:var(--green); color:white;
+  font-family:'IBM Plex Sans',sans-serif; font-size:18px; font-weight:700;
+  padding:18px 40px; border-radius:100px; text-decoration:none;
+}
+.closing-note { font-size:12px; color:rgba(255,255,255,.22); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ 1. COVER ═══════════════ -->
+<div class="cover grid-dark">
+  <!-- scattered squares -->
+  <div class="sq" style="width:38px;height:38px;background:var(--yellow);top:72px;left:64px;z-index:3;"></div>
+  <div class="sq" style="width:26px;height:26px;background:var(--pink);top:148px;left:220px;z-index:3;"></div>
+  <div class="sq" style="width:32px;height:32px;background:var(--green);top:260px;left:520px;z-index:3;opacity:.7;"></div>
+  <div class="sq" style="width:28px;height:28px;background:var(--dg);border:2px solid rgba(255,255,255,.25);top:310px;right:260px;z-index:3;"></div>
+  <div class="sq" style="width:22px;height:22px;background:var(--dg);border:2px solid rgba(255,255,255,.2);top:200px;right:140px;z-index:3;"></div>
+  <div class="sq" style="width:30px;height:30px;background:var(--yellow);bottom:190px;right:72px;z-index:3;"></div>
+  <div class="sq" style="width:24px;height:24px;background:var(--pink);bottom:80px;right:200px;z-index:3;"></div>
+  <div class="sq" style="width:18px;height:18px;background:var(--green);bottom:120px;left:110px;z-index:3;opacity:.8;"></div>
+
+  <div class="cover-top">
+    <!-- Replace src below with your Tetr logo image file -->
+    <div class="tetr-logo">
+      <img src="tetr-logo.png" alt="Tetr College of Business"
+           style="height:56px;max-width:160px;object-fit:contain;display:block;">
+    </div>
+  </div>
+
+  <div class="cover-img-wrap">
+    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1400&q=80"
+         alt="AI students"
+         onerror="this.src='https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=1400&q=80'">
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-title">AI FELLOWSHIP<br>PROGRAM</div>
+    <div class="cover-desc">A highly selective, multi-geography AI Master's program, co-designed in partnership with global leaders in AI, to prepare the next generation of AI practitioners with one goal: to hire them.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ 2. PROBLEM ═══════════════ -->
+<section class="problem grid-light">
+  <div class="sq" style="width:28px;height:28px;background:var(--dg);opacity:.12;top:44px;right:72px;"></div>
+  <div class="sq" style="width:20px;height:20px;background:var(--dg);opacity:.1;top:110px;right:180px;"></div>
+  <div class="sq" style="width:24px;height:24px;background:var(--green);opacity:.18;bottom:100px;right:56px;"></div>
+
+  <div class="problem-top-label">The Problem :</div>
+  <div class="problem-h">The <span class="pixel">Ai</span> Workforce Gap</div>
+  <div class="rule" style="background:#1A1A1A;"></div>
+
+  <p class="problem-body">The common perception is that AI is taking jobs away from people. In reality, AI is transforming the nature of work, creating demand for new skills, new roles, and new opportunities.</p>
+  <p class="problem-body">The next generation of graduates need to be equipped with the right skills, to stay relevant in the midst of this global AI shift. AI companies have a big role to play; they can go from watching from the side-lines to leading the charge.</p>
+
+  <div class="stat-grid">
+    <div class="stat-box sb1">
+      <div class="sn">1</div>
+      <div class="st"><strong>78% of universities</strong> believe they meet employer needs, yet AI evaluation remains a key graduate skills gap.</div>
+    </div>
+    <div class="stat-box sb2">
+      <div class="sn">2</div>
+      <div class="st"><strong>For 80–90% AI roles,</strong> employers prefer a strong BS/MS plus AI deployment experience over a PhD.</div>
+    </div>
+    <div class="stat-box sb3">
+      <div class="sn">3</div>
+      <div class="st"><strong>McKinsey</strong> estimates that <strong>15–30%</strong> of jobs could be affected by AI while generating hundreds of millions of new AI-enabled roles.</div>
+    </div>
+    <div class="stat-box sb4">
+      <div class="sn">4</div>
+      <div class="st"><strong>AI-skilled workers earn 28% higher salaries</strong> and fill 51% of newly created roles.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ 3. DEMAND IS CLEAR ═══════════════ -->
+<section class="demand grid-dark">
+  <div class="demand-h">
+    The <span class="hi">Demand Is Clear.</span><br>
+    The Supply Needs<br>To Deliver
+  </div>
+  <div class="demand-rule"></div>
+  <div class="demand-sub">These are some live job postings from world's leading AI companies</div>
+</section>
+
+
+<!-- ═══════════════ 4. JD TABLE ═══════════════ -->
+<section class="jd-sec grid-dark">
+  <div class="jd-block">
+  <table class="jd-tbl">
+    <thead class="jd-thead">
+      <tr>
+        <th class="jd-th">Company</th>
+        <th class="jd-th">Role</th>
+        <th class="jd-th">About the Role</th>
+        <th class="jd-th">Key Skills Required</th>
+      </tr>
+    </thead>
+    <tbody class="jd-tbody">
+
+      <tr>
+        <td class="jd-td"><div class="co-wrap"><img class="co-logo" src="https://logo.clearbit.com/openai.com" alt="OpenAI" onerror="this.style.display='none'"><div class="co-name">OpenAI</div></div></td>
+        <td class="jd-td"><div class="role-t">Forward Deployed Engineer</div><div class="role-l">New York</div></td>
+        <td class="jd-td"><div class="role-d">Deploy GPT-4 solutions with enterprise clients, translating frontier AI research into scalable production applications.</div></td>
+        <td class="jd-td"><div class="pills"><span class="pill pg">LLM Deployment</span><span class="pill pg">System Design</span><span class="pill pg">Python / JS</span><span class="pill pg">Prod Rollout</span><span class="pill pg">API Integration</span></div></td>
+      </tr>
+
+      <tr>
+        <td class="jd-td"><div class="co-wrap"><img class="co-logo" src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" onerror="this.style.display='none'"><div class="co-name">Microsoft</div></div></td>
+        <td class="jd-td"><div class="role-t">MLOps Engineer</div><div class="role-l">Multiple locations</div></td>
+        <td class="jd-td"><div class="role-d">Architect end-to-end ML pipelines on Azure, ensuring reliable model deployment, monitoring, and continuous retraining at enterprise scale.</div></td>
+        <td class="jd-td"><div class="pills"><span class="pill pc">RAG Pipelines</span><span class="pill pc">Fine-Tuning</span><span class="pill pc">Eval Frameworks</span><span class="pill pc">Azure ML</span><span class="pill pc">Data Pipelines</span></div></td>
+      </tr>
+
+      <tr>
+        <td class="jd-td"><div class="co-wrap"><img class="co-logo" src="https://logo.clearbit.com/meta.com" alt="Meta" onerror="this.style.display='none'"><div class="co-name">Meta AI</div></div></td>
+        <td class="jd-td"><div class="role-t">Machine Learning Engineer</div><div class="role-l">Menlo Park / Remote</div></td>
+        <td class="jd-td"><div class="role-d">Train and optimize large-scale language models for Meta AI products, working across distributed infrastructure and model efficiency research.</div></td>
+        <td class="jd-td"><div class="pills"><span class="pill pp">Deep Learning</span><span class="pill pp">LLM Architecture</span><span class="pill pp">PyTorch</span><span class="pill pp">Distributed Systems</span><span class="pill pp">MLOps</span></div></td>
+      </tr>
+
+      <tr>
+        <td class="jd-td"><div class="co-wrap"><img class="co-logo" src="https://logo.clearbit.com/deepmind.com" alt="DeepMind" onerror="this.style.display='none'"><div class="co-name">Google DeepMind</div></div></td>
+        <td class="jd-td"><div class="role-t">Research Engineer</div><div class="role-l">London / Mountain View</div></td>
+        <td class="jd-td"><div class="role-d">Build and evaluate frontier AI systems, contributing to breakthrough capabilities in reasoning, planning, and multimodal understanding.</div></td>
+        <td class="jd-td"><div class="pills"><span class="pill py">Frontier Models</span><span class="pill py">Distributed Computing</span><span class="pill py">ML Systems</span><span class="pill py">Model Optimization</span></div></td>
+      </tr>
+
+      <tr>
+        <td class="jd-td"><div class="co-wrap"><img class="co-logo" src="https://logo.clearbit.com/anthropic.com" alt="Anthropic" onerror="this.style.display='none'"><div class="co-name">Anthropic</div></div></td>
+        <td class="jd-td"><div class="role-t">AI Safety Engineer</div><div class="role-l">San Francisco</div></td>
+        <td class="jd-td"><div class="role-d">Design evaluation frameworks and red-teaming protocols for Claude, contributing to Constitutional AI research and responsible deployment.</div></td>
+        <td class="jd-td"><div class="pills"><span class="pill ppk">RLHF</span><span class="pill ppk">Model Evaluation</span><span class="pill ppk">Constitutional AI</span><span class="pill ppk">Red-teaming</span><span class="pill ppk">Safety Research</span></div></td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+</section>
+
+
+<!-- ═══════════════ 5. INTRODUCING ═══════════════ -->
+<section class="intro grid-light">
+  <div class="sq" style="width:28px;height:28px;background:var(--purple);top:36px;right:56px;"></div>
+  <div class="sq" style="width:20px;height:20px;background:var(--green);opacity:.25;bottom:200px;right:90px;"></div>
+
+  <div class="intro-h1">Introducing The Tetr</div>
+  <div class="intro-h2">
+    <span class="intro-pixel">AI</span>
+    <span class="intro-serif">Fellowship</span>
+  </div>
+  <div class="intro-rule"></div>
+
+  <p class="intro-body">A first-of-its-kind, industry-integrated <strong>18-months fellowship</strong>, co-built with pioneering AI organizations, so fellows join the workforce as proven practitioners.</p>
+
+  <div class="logos-heading">Curriculum Co-Designed With:</div>
+  <!-- Replace each src="..." below with your own logo image file paths -->
+  <div class="logos-row">
+    <div class="logo-circle">
+      <img src="logo-openai.png" alt="OpenAI">
+    </div>
+    <div class="logo-circle">
+      <img src="logo-microsoft.png" alt="Microsoft">
+    </div>
+    <div class="logo-circle">
+      <img src="logo-meta.png" alt="Meta">
+    </div>
+    <div class="logo-circle">
+      <img src="logo-google.png" alt="Google">
+    </div>
+    <div class="logo-circle">
+      <img src="logo-xai.png" alt="xAI">
+    </div>
+    <div class="logo-circle">
+      <img src="logo-anthropic.png" alt="Anthropic">
+    </div>
+    <div class="logo-circle">
+      <img src="logo-mistral.png" alt="Mistral">
+    </div>
+  </div>
+
+  <div class="cities-heading">Spread Across <span class="serif-italic">Four Global Markets</span></div>
+  <div class="cities-strip">
+    <div class="city">
+      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai"
+           onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&q=80'">
+      <div class="city-name">Dubai</div>
+    </div>
+    <div class="city">
+      <img src="https://images.unsplash.com/photo-1596560548464-f010b8e27f89?w=500&q=80" alt="India"
+           onerror="this.src='https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=500&q=80'">
+      <div class="city-name">India</div>
+    </div>
+    <div class="city">
+      <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=500&q=80" alt="United States"
+           onerror="this.src='https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500&q=80'">
+      <div class="city-name">United States</div>
+    </div>
+    <div class="city">
+      <img src="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=500&q=80" alt="China"
+           onerror="this.src='https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=500&q=80'">
+      <div class="city-name">China</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ 6. STRUCTURED PATH ═══════════════ -->
+<section class="path grid-light">
+  <div class="sq" style="width:28px;height:28px;background:var(--pink);top:36px;right:56px;"></div>
+
+  <div class="path-h"><span class="hi">A Structured Path</span> Across Five Stages</div>
+  <div class="path-rule"></div>
+  <p class="path-sub">Programs launched across three key AI talent markets, enabling Tetr to develop a truly global pipeline of AI-ready practitioners.</p>
+
+  <div class="tl-outer">
+    <div class="tl-nums">
+      <div class="tl-num-col"><div class="tl-n">01</div></div>
+      <div class="tl-num-col"><div class="tl-n">02</div></div>
+      <div class="tl-num-col"><div class="tl-n">03</div></div>
+      <div class="tl-num-col"><div class="tl-n">04</div></div>
+      <div class="tl-num-col"><div class="tl-n">05</div></div>
+    </div>
+
+    <div class="tl-line-row">
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    </div>
+
+    <div class="tl-texts">
+      <div class="tl-text"><strong>Selective admission</strong> for high-achieving AI and tech students, co-vetted directly with industry partners.</div>
+      <div class="tl-text"><strong>12 months of intensive coursework</strong>, industry-co-designed, featuring live masterclasses from frontier AI engineers.</div>
+      <div class="tl-text"><strong>Concurrent guaranteed internship</strong> where every fellow is matched early with a partner organization for production work.</div>
+      <div class="tl-text"><strong>6 month pre-graduation role</strong> giving fellows a full production position to ship real work before graduating.</div>
+      <div class="tl-text"><strong>Outcome is a degree</strong> awarded by Tetr marking the fellow's transition into the industry.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ 7. GENAI TOOLS ═══════════════ -->
+<section class="tools">
+  <div class="tools-eyebrow">Hands-On Exposure</div>
+  <div class="tools-h">Fellows work with the tools reshaping every industry</div>
+
+  <div class="tools-grid">
+    <div class="tool-cat">
+      <div class="tc-hd"><div class="tc-dot" style="background:var(--green);"></div><div class="tc-lbl">Frontier Models</div></div>
+      <div class="tool-tags">
+        <span class="ttag tg">GPT-4o</span>
+        <span class="ttag tg">o1 · Strawberry</span>
+        <span class="ttag tg">o3</span>
+        <span class="ttag tg">Claude 3.5</span>
+        <span class="ttag tg">Claude 4</span>
+        <span class="ttag tg">Gemini 2.0</span>
+        <span class="ttag tg">Llama 4</span>
+        <span class="ttag tg">Grok 3</span>
+        <span class="ttag tg">Mistral Large</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-hd"><div class="tc-dot" style="background:var(--purple);"></div><div class="tc-lbl">Build &amp; Deploy</div></div>
+      <div class="tool-tags">
+        <span class="ttag tp">LangChain</span>
+        <span class="ttag tp">LlamaIndex</span>
+        <span class="ttag tp">RAG Pipelines</span>
+        <span class="ttag tp">Fine-Tuning</span>
+        <span class="ttag tp">vLLM</span>
+        <span class="ttag tp">RLHF</span>
+        <span class="ttag tp">HuggingFace</span>
+        <span class="ttag tp">PyTorch</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-hd"><div class="tc-dot" style="background:var(--cyan);"></div><div class="tc-lbl">Agentic &amp; Dev Tools</div></div>
+      <div class="tool-tags">
+        <span class="ttag tc">GitHub Copilot</span>
+        <span class="ttag tc">Cursor</span>
+        <span class="ttag tc">OpenAI Agents SDK</span>
+        <span class="ttag tc">AutoGen</span>
+        <span class="ttag tc">CrewAI</span>
+        <span class="ttag tc">Claude Code</span>
+        <span class="ttag tc">Perplexity</span>
+        <span class="ttag tc">MCP</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-hd"><div class="tc-dot" style="background:var(--pink);"></div><div class="tc-lbl">Multimodal &amp; Creative</div></div>
+      <div class="tool-tags">
+        <span class="ttag tpk">DALL-E 3</span>
+        <span class="ttag tpk">Sora</span>
+        <span class="ttag tpk">Midjourney</span>
+        <span class="ttag tpk">Runway ML</span>
+        <span class="ttag tpk">Veo 2</span>
+        <span class="ttag tpk">ElevenLabs</span>
+        <span class="ttag tpk">Gemini Vision</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ 8. CURRICULUM PHILOSOPHY ═══════════════ -->
+<section class="curric grid-light">
+  <div class="sq" style="width:24px;height:24px;background:var(--green);opacity:.15;top:36px;right:72px;"></div>
+
+  <div class="curric-h">AI Runs the Backbone of our Curriculum</div>
+
+  <div class="curric-blocks">
+
+    <div class="curric-block cb1">
+      <div class="cb-num">01</div>
+      <div class="curric-title">Open-AI Exams. Every time.</div>
+      <div class="curric-body">All assessments are open: ChatGPT, Perplexity, notes, the internet. The exam question becomes: given everything, can they think?</div>
+    </div>
+
+    <div class="curric-block cb2">
+      <div class="cb-num">02</div>
+      <div class="curric-title">Agent development in every course</div>
+      <div class="curric-body">Fellows design, train, and deploy real systems that solve the problems the course is built around, turning each subject into an applied engineering exercise.</div>
+    </div>
+
+    <div class="curric-block cb3">
+      <div class="cb-num">03</div>
+      <div class="curric-title">AI-augmented teachers</div>
+      <div class="curric-body">Augmented AI avatars of our faculty deliver core knowledge directly to students, while faculty focus on reasoning, debate, and judgment-driven work.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════ 9. STREAMS ═══════════════ -->
+<section class="streams grid-dark">
+  <div class="streams-eyebrow">Specialisations</div>
+  <div class="streams-h">Six Streams.<br>All of them AI-First.</div>
+  <div class="streams-sub">Fellows choose a domain at admission. Every stream is built around deploying AI within that field from day one.</div>
+
+  <div class="streams-grid">
+
+    <div class="stream-card">
+      <div class="stream-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="12" cy="12" r="3"/><circle cx="4" cy="7" r="2"/><circle cx="20" cy="7" r="2"/>
+          <circle cx="4" cy="17" r="2"/><circle cx="20" cy="17" r="2"/>
+          <line x1="9.3" y1="10.5" x2="5.9" y2="8.6"/><line x1="14.7" y1="10.5" x2="18.1" y2="8.6"/>
+          <line x1="9.3" y1="13.5" x2="5.9" y2="15.4"/><line x1="14.7" y1="13.5" x2="18.1" y2="15.4"/>
+        </svg>
+      </div>
+      <div class="stream-label">Stream 01 · Artificial Intelligence</div>
+      <div class="stream-title">Artificial Intelligence</div>
+      <div class="stream-desc">Neural architecture, LLMs, autonomous agents, alignment. Build the models, shape the systems that power everything else.</div>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M16.9 16.9l2.1 2.1M4.9 19.1l2.1-2.1M16.9 7.1l2.1-2.1"/>
+        </svg>
+      </div>
+      <div class="stream-label">Stream 02 · Robotics &amp; Hardware</div>
+      <div class="stream-title">Robotics &amp; Hardware Engineering</div>
+      <div class="stream-desc">Embedded systems, mechanical intelligence, humanoid design. The physical machines of the next century.</div>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M8 4c0 4.4 8 4.4 8 8s-8 3.6-8 8"/>
+          <path d="M16 4c0 4.4-8 4.4-8 8s8 3.6 8 8"/>
+          <line x1="8.5" y1="10" x2="15.5" y2="10"/><line x1="8.5" y1="14" x2="15.5" y2="14"/>
+        </svg>
+      </div>
+      <div class="stream-label">Stream 03 · Longevity &amp; Biosciences</div>
+      <div class="stream-title">Longevity &amp; Biosciences</div>
+      <div class="stream-desc">Ageing biology, genomics, drug discovery, computational biology. AI applied to humanity's oldest challenge.</div>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="12" cy="12" r="2" fill="currentColor"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.5"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(60 12 12)"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(120 12 12)"/>
+        </svg>
+      </div>
+      <div class="stream-label">Stream 04 · Quantum Computing</div>
+      <div class="stream-title">Quantum Computing</div>
+      <div class="stream-desc">Qubits, quantum error correction, quantum ML. The stack that will break and rebuild cryptography, chemistry, and optimisation.</div>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12,2 22,7 22,17 12,22 2,17 2,7"/>
+          <polygon points="12,7 17,9.5 17,14.5 12,17 7,14.5 7,9.5"/>
+        </svg>
+      </div>
+      <div class="stream-label">Stream 05 · Nanotechnology</div>
+      <div class="stream-title">Nanotechnology &amp; Future Materials</div>
+      <div class="stream-desc">Engineering matter at the molecular scale. Materials that didn't exist a decade ago, designed by people who understand why they should.</div>
+    </div>
+
+    <div class="stream-card">
+      <div class="stream-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2L6 14h7l-3 8 11-12h-7z"/>
+        </svg>
+      </div>
+      <div class="stream-label">Stream 06 · New Energy</div>
+      <div class="stream-title">New Energy Systems</div>
+      <div class="stream-desc">Solar, fusion, hydrogen, smart grid. Whoever solves energy sets the terms for everything else. AI accelerates the timeline.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════ 10. INDUSTRY PARTNERS ═══════════════ -->
+<section class="partners grid-light">
+  <div class="sq" style="width:32px;height:32px;background:var(--purple);top:36px;right:56px;"></div>
+  <div class="sq" style="width:20px;height:20px;background:var(--pink);opacity:.5;top:80px;right:108px;"></div>
+
+  <div class="partners-h">For Industry Partners</div>
+  <div class="partners-rule"></div>
+
+  <p class="partners-intro">This goes beyond sponsorship. It is about co-investing in your talent pipeline. Partners are involved at every stage: vetting applicants, shaping curriculum, delivering teaching, and hosting fellows in production roles.</p>
+
+  <div class="partners-grid">
+
+    <div class="partner-benefit">
+      <div class="pb-top">
+        <svg class="pb-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="22" cy="20" r="10"/>
+          <path d="M8 46c0-7.7 6.3-14 14-14h16"/>
+          <circle cx="40" cy="38" r="8"/>
+          <line x1="46" y1="44" x2="52" y2="50"/>
+        </svg>
+        <div class="pb-title">Early Talent Access</div>
+      </div>
+      <div class="pb-body">Fellows are vetted and shaped in partnership with you. Meet your future hires before graduation, and before competitors can.</div>
+    </div>
+
+    <div class="partner-benefit">
+      <div class="pb-top">
+        <svg class="pb-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="8" width="40" height="40" rx="4"/>
+          <line x1="16" y1="20" x2="40" y2="20"/>
+          <line x1="16" y1="28" x2="40" y2="28"/>
+          <line x1="16" y1="36" x2="30" y2="36"/>
+          <path d="M34 34l6-2 2 6-6-4z"/>
+        </svg>
+        <div class="pb-title">Curriculum Influence</div>
+      </div>
+      <div class="pb-body">Shape what the next generation of AI practitioners learns. Your engineers define competency standards and deliver the masterclasses.</div>
+    </div>
+
+    <div class="partner-benefit">
+      <div class="pb-top">
+        <svg class="pb-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="14" width="40" height="34" rx="4"/>
+          <line x1="8" y1="24" x2="48" y2="24"/>
+          <line x1="20" y1="8" x2="20" y2="20"/>
+          <line x1="36" y1="8" x2="36" y2="20"/>
+          <line x1="18" y1="34" x2="28" y2="34"/>
+          <line x1="18" y1="40" x2="24" y2="40"/>
+        </svg>
+        <div class="pb-title">Internships for 6 Months</div>
+      </div>
+      <div class="pb-body">Fellows join your team for a guaranteed 6-month pre-graduation placement, working on real production problems as embedded engineers.</div>
+    </div>
+
+    <div class="partner-benefit">
+      <div class="pb-top">
+        <svg class="pb-icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="28" cy="28" r="18"/>
+          <path d="M28 16v12l8 6"/>
+          <circle cx="28" cy="28" r="3" fill="currentColor"/>
+        </svg>
+        <div class="pb-title">First Right to Hire</div>
+      </div>
+      <div class="pb-body">Partners get priority access to full-time offers before fellows enter the open market. Your pipeline. Your timeline. Your terms.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════ 11. CLOSING ═══════════════ -->
+<div class="closing grid-dark">
+  <div>
+    <div class="closing-title">The transformation is already underway. Are your future hires ready?</div>
+    <div class="closing-sub">Tetr is building the program to close the gap between academic AI education and what production environments actually require.</div>
+  </div>
+  <div class="closing-r">
+    <div class="cta-label">Ready to join the Fellowship?</div>
+    <a href="#" class="apply-btn">Apply Now</a>
+    <div class="closing-note">Tetr · AI Excellence Fellowship · 2026<br>Confidential — prepared for prospective partners</div>
+  </div>
+</div>
+
+</body>
+</html>
