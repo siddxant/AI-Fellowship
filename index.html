@@ -364,7 +364,7 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .int-stats-bar { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-radius:10px; overflow:hidden; margin-bottom:40px; }
 /* Image placeholder for internships body */
 .int-img-ph {
-  width:100%; background:#0a2a18; border-radius:10px; height:240px;
+  width:100%; height:280px; background:#0a2a18; border-radius:10px;
   display:flex; align-items:center; justify-content:center; flex-direction:column;
   gap:10px; color:rgba(255,255,255,0.18); font-size:11px; letter-spacing:1px;
   border:1.5px dashed rgba(255,255,255,0.12); margin-bottom:10px;
@@ -376,7 +376,7 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .isb3 { background:#002810; border-left:1px solid rgba(255,255,255,0.1); }
 .isb-num { font-size:40px; font-weight:700; color:white; line-height:1; }
 .isb-lbl { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:7px; }
-.int-body { display:grid; grid-template-columns:1fr 1.5fr; gap:48px; }
+.int-body { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
 .int-logos-h { font-size:15px; font-weight:700; color:white; margin-bottom:16px; }
 .int-logos-h em { font-style:normal; color:var(--yellow); }
 .int-logos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
@@ -1014,10 +1014,9 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
       <div class="wc-type">Capstone Hours</div>
       <div class="wc-title">Model Tuning &amp; Team Standup</div>
     </div>
-    <div class="wc-img">
-      <div class="wc-img-placeholder">
-        <img src="calendar-1.png" alt="Mistral">
-      </div>
+    <div class="wc">
+      <div class="wc-type">Evening Session</div>
+      <div class="wc-title">AI Ethics Debate: Accountability in Autonomous Systems</div>
     </div>
 
     <!-- TUE -->
@@ -1045,11 +1044,9 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
       <div class="wc-type">Workshop</div>
       <div class="wc-title">Prompt Engineering &amp; Chain-of-Thought Reasoning</div>
     </div>
-    <div class="wc-img">
-      <div class="wc-img-placeholder">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-        Add Photo
-      </div>
+    <div class="wc">
+      <div class="wc-type">Guest Lecture</div>
+      <div class="wc-title">How Frontier Labs Think About Safety at Scale</div>
     </div>
     <div class="wc">
       <div class="wc-type">Bootcamp</div>
@@ -1081,11 +1078,9 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 
     <!-- FRI -->
     <div class="week-day-lbl">FRI</div>
-    <div class="wc-img">
-      <div class="wc-img-placeholder">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-        Add Photo
-      </div>
+    <div class="wc">
+      <div class="wc-type">Deep Work</div>
+      <div class="wc-title">Solo Research Sprint &amp; Literature Review</div>
     </div>
     <div class="wc">
       <div class="wc-type">Industry Immersion</div>
@@ -1106,11 +1101,9 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
       <div class="wc-type">Hackathon Sprint</div>
       <div class="wc-title">Build, Deploy &amp; Demo an AI Agent in 24 Hours</div>
     </div>
-    <div class="wc-img">
-      <div class="wc-img-placeholder">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-        Add Photo
-      </div>
+    <div class="wc">
+      <div class="wc-type">Peer Showcase</div>
+      <div class="wc-title">Cohort Demo Day: Present Your Weekly Build</div>
     </div>
     <div class="wc">
       <div class="wc-type">Leaders Roundtable</div>
@@ -1124,17 +1117,13 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
       <div class="wc-title">City Exploration &amp; Unstructured Thinking Time</div>
       <div class="wc-sub">No agenda. Walk the city. Let the week settle.</div>
     </div>
-    <div class="wc-img">
-      <div class="wc-img-placeholder">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-        Add Photo
-      </div>
+    <div class="wc">
+      <div class="wc-type">Reflection</div>
+      <div class="wc-title">Weekly Journal: What Did You Build? What Did You Learn?</div>
     </div>
-    <div class="wc-img">
-      <div class="wc-img-placeholder">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-        Add Photo
-      </div>
+    <div class="wc">
+      <div class="wc-type">Community</div>
+      <div class="wc-title">Cohort Social &amp; Cross-Stream Networking Dinner</div>
     </div>
 
   </div>
@@ -1165,29 +1154,25 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
       <!-- Photo 1: swap inner div with <img src="dubai.jpg"> -->
       <div class="cap-photo">
         <div class="cap-photo-ph">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-          Add Photo
+          <img src="dropshipping.png">
         </div>
       </div>
       <!-- Photo 2: swap inner div with <img src="india.jpg"> -->
       <div class="cap-photo">
         <div class="cap-photo-ph">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-          Add Photo
+          <img src="d2c.png">
         </div>
       </div>
       <!-- Photo 3: swap inner div with <img src="singapore.jpg"> -->
       <div class="cap-photo">
         <div class="cap-photo-ph">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-          Add Photo
+          <img src="kickstarter.png">
         </div>
       </div>
       <!-- Photo 4: swap inner div with <img src="ghana.jpg"> -->
       <div class="cap-photo">
         <div class="cap-photo-ph">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
-          Add Photo
+          <img src="social.png">
         </div>
       </div>
     </div>
