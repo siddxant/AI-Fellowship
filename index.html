@@ -215,7 +215,87 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .pb-title { font-size:20px; font-weight:700; color:#1A1A1A; line-height:1.2; }
 .pb-body { font-size:14px; color:#555; line-height:1.75; max-width:320px; }
 /* ══════════════════════════════════════
-   11. STUDENT OUTCOMES STRIP
+   10b. FACULTY
+══════════════════════════════════════ */
+.faculty { display:grid; grid-template-columns:1fr 1fr; min-height:700px; }
+.faculty-left {
+  padding:64px 56px 56px;
+  background:#f0faf5;
+  background-image:linear-gradient(rgba(0,0,0,0.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,0,0,0.03) 1px,transparent 1px);
+  background-size:40px 40px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  border-right:2px solid #1A1A1A;
+}
+.faculty-right {
+  padding:40px 48px 56px;
+  background:#f8fdfb;
+  background-image:linear-gradient(rgba(0,0,0,0.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,0,0,0.025) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.faculty-title-serif { font-family:'Playfair Display',serif; font-style:italic; font-size:52px; color:var(--green); line-height:1; }
+.faculty-title-bold { font-size:52px; font-weight:700; color:#1A1A1A; line-height:1; letter-spacing:-1px; text-transform:uppercase; }
+.faculty-body { font-size:15px; color:#444; line-height:1.75; margin:28px 0 32px; }
+.faculty-tagline { font-size:15px; font-weight:700; color:#1A1A1A; line-height:1.6; margin-bottom:36px; }
+.fc-row { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.fc-row-2 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:10px; }
+.fc { background:white; border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.fc-img {
+  height:160px; background:var(--dg); display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid rgba(255,255,255,0.1); overflow:hidden; position:relative;
+}
+.fc-img img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+.fc-img-ph {
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  color:rgba(255,255,255,0.25); font-size:10px; letter-spacing:1px; text-align:center;
+  width:100%; height:100%;
+}
+.fc-img-ph svg { opacity:0.3; }
+.fc-info { padding:12px 12px 8px; }
+.fc-name { font-size:14px; font-weight:700; color:#1A1A1A; margin-bottom:3px; line-height:1.3; }
+.fc-role { font-size:11px; color:#888; line-height:1.4; margin-bottom:8px; }
+.fc-inst { font-size:11px; font-weight:700; color:var(--dg); letter-spacing:0.5px; border-top:1px solid #f0f0f0; padding-top:8px; margin-top:4px; }
+.fc-area { padding:8px 12px 12px; }
+.fc-area-lbl { font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#BBBBBB; margin-bottom:4px; }
+.fc-area-val { font-size:12px; color:#444; line-height:1.4; }
+
+/* ══════════════════════════════════════
+   11. WEEK AT TETR
+══════════════════════════════════════ */
+.week { padding:72px 64px 80px; }
+.week-title-wrap { margin-bottom:56px; }
+.week-title-serif { font-family:'Playfair Display',serif; font-style:italic; font-size:72px; color:#7AE4A8; line-height:1; }
+.week-title-bold { font-size:80px; font-weight:700; color:white; line-height:0.95; letter-spacing:-1px; }
+.week-table { display:grid; grid-template-columns:80px repeat(4,1fr); gap:6px; }
+.week-day-lbl {
+  display:flex; align-items:center; justify-content:center;
+  background:var(--green); border-radius:8px;
+  font-size:14px; font-weight:700; color:white; letter-spacing:1px;
+  padding:12px 4px; text-align:center; align-self:stretch;
+}
+.wc {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px; padding:16px 14px;
+}
+.wc-type { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow); margin-bottom:6px; }
+.wc-title { font-size:13px; font-weight:600; color:white; line-height:1.45; }
+.wc-sub { font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5; margin-top:5px; }
+.wc-empty { background:transparent; border:none; }
+.wc-img {
+  border-radius:8px; overflow:hidden; min-height:90px;
+  border:1.5px dashed rgba(255,255,255,0.15);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:8px;
+  background:rgba(255,255,255,0.03);
+}
+.wc-img img { width:100%; height:100%; object-fit:cover; display:block; border-radius:8px; }
+.wc-img-placeholder { color:rgba(255,255,255,0.18); font-size:11px; letter-spacing:1px; text-align:center; }
+.wc-img-placeholder svg { display:block; margin:0 auto 6px; opacity:0.3; }
+.wc-span2 { grid-column:span 2; }
+
+/* ══════════════════════════════════════
+   12. STUDENT OUTCOMES STRIP
 ══════════════════════════════════════ */
 .outcomes-strip { padding:0 64px 64px; }
 .outcomes-inner {
@@ -609,7 +689,335 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-<!-- ═══════════════ 11. STUDENT OUTCOMES (WIP) ═══════════════ -->
+<!-- ═══════════════ 10b. FACULTY ═══════════════ -->
+<section class="faculty">
+
+  <!-- LEFT COLUMN -->
+  <div class="faculty-left">
+    <div>
+      <div class="faculty-title-serif">Learn from</div>
+      <div class="faculty-title-bold">Top AI<br>Researchers &amp;<br>Frontier Engineers</div>
+      <p class="faculty-body">The faculty at Tetr are not here to teach theory. They are here because they have built, deployed, and scaled AI systems at the world's most consequential labs and institutions. Researchers from frontier AI labs, engineers who shipped the models you use today, and professors from the world's leading technical universities.</p>
+      <p class="faculty-tagline">At the Tetr AI Fellowship,<br><strong>the frontier is in the room with you.</strong></p>
+    </div>
+    <div class="fc-row">
+      <div class="fc">
+        <div class="fc-img">
+          <!-- Replace with: <img src="faculty1.jpg" alt="Name"> -->
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">AI Research Lead</div>
+          <div class="fc-inst">OpenAI</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Area of Interest</div>
+          <div class="fc-area-val">Large Language Models &amp; Alignment</div>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">Professor, CSAIL</div>
+          <div class="fc-inst">MIT</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Teaching</div>
+          <div class="fc-area-val">Deep Learning &amp; Neural Architecture</div>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">Former VP Engineering</div>
+          <div class="fc-inst">Google DeepMind</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Teaching</div>
+          <div class="fc-area-val">AI Systems at Scale</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="faculty-right">
+    <div class="fc-row-2">
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">Professor, AI Lab</div>
+          <div class="fc-inst">Stanford University</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Area of Interest</div>
+          <div class="fc-area-val">Reinforcement Learning</div>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">AI Safety Researcher</div>
+          <div class="fc-inst">Anthropic</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Area of Interest</div>
+          <div class="fc-area-val">Constitutional AI &amp; Red-Teaming</div>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">Principal Researcher</div>
+          <div class="fc-inst">Google Brain</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Area of Interest</div>
+          <div class="fc-area-val">Multimodal &amp; Vision-Language Models</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-row-2">
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">Professor, Robotics Institute</div>
+          <div class="fc-inst">Carnegie Mellon University</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Area of Interest</div>
+          <div class="fc-area-val">Robotics &amp; Embodied AI</div>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">Former Chief AI Officer</div>
+          <div class="fc-inst">xAI</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Teaching</div>
+          <div class="fc-area-val">Frontier Model Architecture &amp; Inference</div>
+        </div>
+      </div>
+      <div class="fc">
+        <div class="fc-img">
+          <div class="fc-img-ph">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Add Photo
+          </div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-name">Faculty Name</div>
+          <div class="fc-role">Professor, BAIR</div>
+          <div class="fc-inst">UC Berkeley</div>
+        </div>
+        <div class="fc-area">
+          <div class="fc-area-lbl">Area of Interest</div>
+          <div class="fc-area-val">AI Ethics, Policy &amp; Governance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ 11. WEEK AT TETR ═══════════════ -->
+<section class="week grid-dark">
+  <div class="week-title-wrap">
+    <div class="week-title-serif">A Week</div>
+    <div class="week-title-bold">AT TETR</div>
+  </div>
+  <div class="week-table">
+
+    <!-- MON -->
+    <div class="week-day-lbl">MON</div>
+    <div class="wc">
+      <div class="wc-type">Workshop</div>
+      <div class="wc-title">Designing AI-Native User Experiences</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">1:1 Mentorship</div>
+      <div class="wc-title">AI Project Architecture Review</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Capstone Hours</div>
+      <div class="wc-title">Model Tuning &amp; Team Standup</div>
+    </div>
+    <div class="wc-img">
+      <div class="wc-img-placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+
+    <!-- TUE -->
+    <div class="week-day-lbl">TUE</div>
+    <div class="wc">
+      <div class="wc-type">AI Leader Connect</div>
+      <div class="wc-title">Scaling AI Teams at Frontier Labs</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Workshop</div>
+      <div class="wc-title">Model Evaluation &amp; Benchmarking Frameworks</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Workshop</div>
+      <div class="wc-title">Building RAG Pipelines from Scratch</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Industry Immersion</div>
+      <div class="wc-title">AI Lab Tour &amp; Research Deep-Dive</div>
+    </div>
+
+    <!-- WED -->
+    <div class="week-day-lbl">WED</div>
+    <div class="wc">
+      <div class="wc-type">Workshop</div>
+      <div class="wc-title">Prompt Engineering &amp; Chain-of-Thought Reasoning</div>
+    </div>
+    <div class="wc-img">
+      <div class="wc-img-placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Bootcamp</div>
+      <div class="wc-title">AI Product-Market Fit &amp; Use Case Validation</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Capstone Hours</div>
+      <div class="wc-title">Model Red-Teaming &amp; Evaluation</div>
+    </div>
+
+    <!-- THU -->
+    <div class="week-day-lbl">THU</div>
+    <div class="wc">
+      <div class="wc-type">Workshop</div>
+      <div class="wc-title">Fine-Tuning Foundation Models on Custom Datasets</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Workshop</div>
+      <div class="wc-title">Agentic AI System Design &amp; Orchestration</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Capstone Hackathon</div>
+      <div class="wc-title">Live Agent Build &amp; Demo</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Fireside Chat</div>
+      <div class="wc-title">AI Research Frontiers with Industry Engineers</div>
+    </div>
+
+    <!-- FRI -->
+    <div class="week-day-lbl">FRI</div>
+    <div class="wc-img">
+      <div class="wc-img-placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Industry Immersion</div>
+      <div class="wc-title">Google DeepMind Tour &amp; AI Research Deep-Dive</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">CXO Lesson</div>
+      <div class="wc-title">How AI Is Reshaping Healthcare, Finance &amp; Energy</div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Mentorship Circle</div>
+      <div class="wc-title">AI Career Pathways &amp; Hiring Prep</div>
+    </div>
+
+    <!-- SAT -->
+    <div class="week-day-lbl">SAT</div>
+    <div class="wc wc-span2">
+      <div class="wc-type">Hackathon Sprint</div>
+      <div class="wc-title">Build, Deploy &amp; Demo an AI Agent in 24 Hours</div>
+    </div>
+    <div class="wc-img">
+      <div class="wc-img-placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+    <div class="wc">
+      <div class="wc-type">Leaders Roundtable</div>
+      <div class="wc-title">AI Investment Landscape &amp; Frontier Research Bets</div>
+    </div>
+
+    <!-- SUN -->
+    <div class="week-day-lbl">SUN</div>
+    <div class="wc wc-span2">
+      <div class="wc-type">Cultural Immersion</div>
+      <div class="wc-title">City Exploration &amp; Unstructured Thinking Time</div>
+      <div class="wc-sub">No agenda. Walk the city. Let the week settle.</div>
+    </div>
+    <div class="wc-img">
+      <div class="wc-img-placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+    <div class="wc-img">
+      <div class="wc-img-placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ 12. STUDENT OUTCOMES (WIP) ═══════════════ -->
 <section class="partners grid-light" style="padding-top:0;">
   <div class="outcomes-inner">
     <div class="outcomes-left">
