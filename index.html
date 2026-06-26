@@ -313,7 +313,119 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 }
 .outcomes-note { font-size:15px; color:#888; line-height:1.6; max-width:480px; }
 /* ══════════════════════════════════════
-   12. CLOSING
+   12. HANDS ON LEARNING — INTRO + CAPSTONE + INTERNSHIPS
+══════════════════════════════════════ */
+/* --- Intro banner --- */
+.proven-intro { padding:72px 64px 48px; border-bottom:1px solid rgba(0,0,0,0.06); }
+.proven-eyebrow { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--green); margin-bottom:14px; }
+.proven-h { font-size:52px; font-weight:700; color:var(--dg); line-height:1.05; margin-bottom:18px; }
+.proven-h em { font-family:'Playfair Display',serif; font-style:italic; font-weight:400; color:var(--green); }
+.proven-sub { font-size:16px; color:#666; line-height:1.75; max-width:640px; }
+
+/* --- Capstone section --- */
+.capstone { padding:56px 64px 64px; }
+.cap-block { border-radius:16px; overflow:hidden; margin-top:32px; }
+.cap-mid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.cap-photo { position:relative; aspect-ratio:1; overflow:hidden; }
+.cap-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+.cap-photo-ph {
+  width:100%; height:100%; background:#1a3d28;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  gap:10px; color:rgba(255,255,255,0.18); font-size:11px; letter-spacing:1px;
+}
+.cap-photo-ph svg { opacity:0.22; }
+.cap-bottom { background:var(--green); padding:28px 36px; }
+.cap-bottom-lbl { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:20px; }
+.cap-bottom-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.cap-loc-title { font-size:15px; font-weight:700; color:white; margin-bottom:6px; line-height:1.3; }
+.cap-loc-body { font-size:12px; color:rgba(255,255,255,0.72); line-height:1.55; font-style:italic; }
+.cap-loc-body strong { font-style:normal; color:var(--yellow); }
+
+/* --- Shared dark-section heading style (capstone + internships) --- */
+.dark-eyebrow { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--yellow); margin-bottom:14px; }
+.dark-h { font-size:44px; font-weight:700; color:white; line-height:1.1; margin-bottom:10px; }
+.dark-h em { font-family:'Playfair Display',serif; font-style:italic; font-weight:400; color:var(--yellow); }
+
+/* --- Internships section (dark, high-impact) --- */
+.internships { background:#021a0a; padding:56px 64px 72px; }
+.int-sub { font-size:14px; font-style:italic; color:rgba(255,255,255,0.38); margin-bottom:32px; margin-top:0; }
+.int-stats-bar { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-radius:10px; overflow:hidden; margin-bottom:40px; }
+/* Image placeholder for internships body */
+.int-img-ph {
+  width:100%; background:#0a2a18; border-radius:10px; height:240px;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  gap:10px; color:rgba(255,255,255,0.18); font-size:11px; letter-spacing:1px;
+  border:1.5px dashed rgba(255,255,255,0.12); margin-bottom:10px;
+}
+.int-img-ph svg { opacity:0.22; }
+.isb { padding:22px 28px; display:flex; flex-direction:column; }
+.isb1 { background:var(--green); }
+.isb2 { background:#004018; border-left:1px solid rgba(255,255,255,0.1); }
+.isb3 { background:#002810; border-left:1px solid rgba(255,255,255,0.1); }
+.isb-num { font-size:40px; font-weight:700; color:white; line-height:1; }
+.isb-lbl { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:7px; }
+.int-body { display:grid; grid-template-columns:1fr 1.5fr; gap:48px; }
+.int-logos-h { font-size:15px; font-weight:700; color:white; margin-bottom:16px; }
+.int-logos-h em { font-style:normal; color:var(--yellow); }
+.int-logos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+.int-logo-item { font-size:11px; font-weight:700; color:rgba(255,255,255,0.72); padding:9px 8px; border:1px solid rgba(255,255,255,0.1); border-radius:6px; text-align:center; background:rgba(255,255,255,0.04); }
+.int-and-more { font-size:12px; font-style:italic; color:rgba(255,255,255,0.28); margin-top:10px; }
+.int-map-h { font-size:15px; font-weight:700; color:white; margin-bottom:14px; }
+.int-map-h em { font-style:normal; color:var(--yellow); }
+.int-map-wrap { border-radius:10px; overflow:hidden; width:100%; }
+.int-map-wrap svg { width:100%; height:auto; display:block; }
+
+/* ══════════════════════════════════════
+   STUDENT BODY SECTION
+══════════════════════════════════════ */
+.student-body { padding:72px 64px 80px; }
+.sb-eyebrow { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--green); margin-bottom:14px; }
+.sb-main-h { font-size:44px; font-weight:700; color:var(--dg); line-height:1.1; margin-bottom:10px; }
+.sb-sub { font-size:16px; color:#555; line-height:1.7; margin-bottom:48px; max-width:740px; }
+.sb-sub strong { color:var(--dg); }
+.sb-diversity { display:grid; grid-template-columns:1fr 1.6fr; gap:48px; margin-bottom:64px; align-items:start; }
+.div-table { border-collapse:collapse; width:100%; border-radius:10px; overflow:hidden; }
+.div-table th { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.8); background:var(--dg); padding:13px 16px; text-align:left; }
+.div-table td { font-size:14px; padding:11px 16px; border-bottom:1px solid rgba(0,0,0,0.05); color:#333; }
+.div-table tbody tr:last-child td { border-bottom:none; }
+.div-table tbody tr:nth-child(even) td { background:#f6fdf9; }
+.div-table .tp { font-weight:700; color:var(--dg); }
+.cohorts-wrap { }
+.cohorts-label { font-size:15px; font-weight:700; color:var(--dg); margin-bottom:18px; }
+.cohorts-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.cohort-block { }
+.cohort-kicker { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:5px; }
+.cohort-count { font-size:17px; font-weight:700; color:var(--dg); margin-bottom:10px; line-height:1.2; }
+.cohort-img-ph {
+  width:100%; aspect-ratio:3/2; height:260px; background:#f0faf5; border-radius:8px;
+  border:1.5px dashed rgba(0,72,34,0.2);
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  gap:8px; color:rgba(0,72,34,0.3); font-size:10px; letter-spacing:1px;
+}
+.cohort-img-ph svg { opacity:0.3; }
+.sb-divider { border:none; border-top:1px solid rgba(0,0,0,0.08); margin:0 0 56px; }
+.sb-quality-h { font-size:40px; font-weight:700; color:var(--dg); line-height:1.1; margin-bottom:8px; }
+.sb-quality-sub { font-size:15px; color:#666; margin-bottom:36px; }
+.sb-quality-sub strong { color:var(--dg); }
+.sq-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:48px; }
+.sq-stat { padding:22px 26px; border-left:3px solid var(--green); background:#f8fdfb; border-radius:0 8px 8px 0; }
+.sq-num { font-size:34px; font-weight:700; color:var(--dg); line-height:1; margin-bottom:6px; }
+.sq-lbl { font-size:13px; font-weight:700; color:#444; margin-bottom:3px; }
+.sq-note { font-size:11px; color:#999; font-style:italic; }
+.sb-logos-wrap { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+.sb-logos-h { font-size:15px; color:#444; line-height:1.55; margin-bottom:18px; }
+.sb-logos-h strong { color:var(--dg); }
+.sb-logo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.sb-logo-ph {
+  height:60px; background:#f5f5f5; border-radius:6px;
+  border:1.5px dashed rgba(0,0,0,0.1);
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  gap:4px; color:rgba(0,0,0,0.2); font-size:9px; letter-spacing:1px;
+}
+.sb-logo-ph svg { opacity:0.22; }
+
+/* ══════════════════════════════════════
+   13. CLOSING
 ══════════════════════════════════════ */
 .closing { padding:80px 64px; display:grid; grid-template-columns:1.2fr 1fr; gap:60px; align-items:center; position:relative; overflow:hidden; }
 .closing::before { content:''; position:absolute; width:420px; height:420px; border-radius:50%; background:rgba(0,156,80,.14); bottom:-160px; right:-100px; pointer-events:none; }
@@ -1026,7 +1138,216 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-<!-- ═══════════════ 12. CLOSING ═══════════════ -->
+<!-- ═══════════════ 12a. HANDS ON LEARNING INTRO ═══════════════ -->
+<section class="proven-intro grid-light">
+  <div class="proven-eyebrow">Hands on Learning</div>
+  <div class="proven-h">Real Projects. Real Companies.<br><em>From Day One.</em></div>
+  <p class="proven-sub">Tetr fellows build real ventures, earn internships at leading organizations across 17 countries, and generate hundreds of thousands in revenue through capstone projects. This is the track record already in place.</p>
+</section>
+
+<!-- ═══════════════ 12b. CAPSTONE PROJECTS ═══════════════ -->
+<section class="capstone" style="background:#021a0a;">
+  <div class="dark-eyebrow">Capstone Projects</div>
+  <div class="dark-h">Building Founder DNA: $500K+ Generated Through<br>Capstone Projects Across 4 Countries</div>
+  <div class="cap-block">
+    <div class="cap-mid">
+      <!-- Photo 1: swap inner div with <img src="dubai.jpg"> -->
+      <div class="cap-photo">
+        <div class="cap-photo-ph">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+          Add Photo
+        </div>
+      </div>
+      <!-- Photo 2: swap inner div with <img src="india.jpg"> -->
+      <div class="cap-photo">
+        <div class="cap-photo-ph">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+          Add Photo
+        </div>
+      </div>
+      <!-- Photo 3: swap inner div with <img src="singapore.jpg"> -->
+      <div class="cap-photo">
+        <div class="cap-photo-ph">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+          Add Photo
+        </div>
+      </div>
+      <!-- Photo 4: swap inner div with <img src="ghana.jpg"> -->
+      <div class="cap-photo">
+        <div class="cap-photo-ph">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+          Add Photo
+        </div>
+      </div>
+    </div>
+    <div class="cap-bottom">
+      <div class="cap-bottom-grid">
+        <div>
+          <div class="cap-loc-title">Dubai: Dropshipping</div>
+          <div class="cap-loc-body"><strong>$171k+</strong> in cumulative revenue across cohorts</div>
+        </div>
+        <div>
+          <div class="cap-loc-title">India: D2C Product</div>
+          <div class="cap-loc-body"><strong>$250k+</strong> in cumulative revenue across cohorts</div>
+        </div>
+        <div>
+          <div class="cap-loc-title">Singapore: Kickstarter</div>
+          <div class="cap-loc-body">14/17 teams fully funded; <strong>100k+ SGD</strong> raised</div>
+        </div>
+        <div>
+          <div class="cap-loc-title">Ghana: Social Impact</div>
+          <div class="cap-loc-body"><strong>1,600+ Lives</strong> impacted across 6+ cities in Ghana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 12c. INTERNSHIPS ═══════════════ -->
+<section class="internships">
+  <div class="dark-eyebrow">Internships</div>
+  <div class="dark-h">290+ Internships, <em>17 Countries</em> | 90%+ With Stipend</div>
+  <div class="int-sub">(Way Above Global Benchmarks)</div>
+
+  <div class="int-stats-bar">
+    <div class="isb isb1">
+      <div class="isb-num">$200K+</div>
+      <div class="isb-lbl">USD Cumulative Stipend</div>
+    </div>
+    <div class="isb isb2">
+      <div class="isb-num">290+</div>
+      <div class="isb-lbl">Internships Placed</div>
+    </div>
+    <div class="isb isb3">
+      <div class="isb-num">90%+</div>
+      <div class="isb-lbl">With Paid Stipend</div>
+    </div>
+  </div>
+  <div class="int-body">
+    <div>
+      <div class="int-logos-h"><em>Host</em> Companies</div>
+      <!-- Replace int-img-ph with: <img src="companies.jpg" style="width:100%;height:240px;object-fit:cover;border-radius:10px;display:block;"> -->
+      <div class="int-img-ph">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+      <div class="int-and-more">...and 100 others</div>
+    </div>
+    <div>
+      <div class="int-map-h">Across <em>the World</em></div>
+      <!-- Replace int-img-ph with: <img src="worldmap.jpg" style="width:100%;height:240px;object-fit:cover;border-radius:10px;display:block;"> -->
+      <div class="int-img-ph">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STUDENT BODY ═══════════════ -->
+<section class="student-body grid-light">
+
+  <div class="sb-eyebrow">Our Student Body</div>
+  <div class="sb-main-h">~90 Countries Represented Across Cohorts</div>
+
+  <div class="sb-diversity">
+    <!-- Diversity table -->
+    <div>
+      <table class="div-table">
+        <thead>
+          <tr>
+            <th>Geography</th>
+            <th>Tetr Diversity</th>
+            <th>World Diversity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>North America</td><td class="tp">10%</td><td>7%</td></tr>
+          <tr><td>South Asia</td><td class="tp">27%</td><td>25%</td></tr>
+          <tr><td>SE &amp; East Asia</td><td class="tp">20%</td><td>29%</td></tr>
+          <tr><td>Middle East</td><td class="tp">6%</td><td>7%</td></tr>
+          <tr><td>LATAM</td><td class="tp">18%</td><td>8%</td></tr>
+          <tr><td>Europe</td><td class="tp">14%</td><td>9%</td></tr>
+          <tr><td>Africa</td><td class="tp">4%</td><td>14%</td></tr>
+          <tr><td>Oceania</td><td class="tp">1%</td><td>1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cohort flags — single image -->
+    <div class="cohorts-wrap">
+      <div class="cohorts-label">Fellows by Cohort</div>
+      <!-- Replace with: <img src="cohort-flags.jpg" style="width:100%;height:260px;object-fit:cover;border-radius:8px;display:block;"> -->
+      <div class="cohort-img-ph" style="height:260px;aspect-ratio:unset;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg>
+        Add Photo
+      </div>
+    </div>
+  </div>
+
+  <hr class="sb-divider">
+
+  <!-- Student Quality -->
+  <div class="sb-quality-h">Student Quality Equivalent to Top 50 Universities</div>
+  <p class="sb-quality-sub">High quality students lead to <strong>super premium brand positioning</strong></p>
+
+  <div class="sq-stats">
+    <div class="sq-stat">
+      <div class="sq-num">1.5%</div>
+      <div class="sq-lbl">Acceptance Rate</div>
+      <div class="sq-note">Cohort of 2026</div>
+    </div>
+    <div class="sq-stat">
+      <div class="sq-num">1475/1600</div>
+      <div class="sq-lbl">Avg. SAT Score</div>
+      <div class="sq-note">~Ivy League Average</div>
+    </div>
+    <div class="sq-stat">
+      <div class="sq-num">330/340</div>
+      <div class="sq-lbl">Average GRE</div>
+      <div class="sq-note">~Top 10 Business Schools</div>
+    </div>
+  </div>
+
+  <div class="sb-logos-wrap">
+    <div>
+      <p class="sb-logos-h">UG Students <strong>Drop Top College Offers</strong> to Join Tetr</p>
+      <div class="sb-logo-grid">
+        <!-- Brown, Yale, Dartmouth, Cornell, HKU Business School, NYU Stern, LSE, Carnegie Mellon, Imperial College London, esade, University of Melbourne, NUS -->
+        <!-- Replace each sb-logo-ph with: <img src="logo.png" style="width:100%;height:60px;object-fit:contain;background:white;border-radius:6px;padding:6px;"> -->
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+      </div>
+    </div>
+    <div>
+      <p class="sb-logos-h">PG Students Come From <strong>Pedigreed Backgrounds</strong></p>
+      <div class="sb-logo-grid">
+        <!-- Deloitte, Google, Goldman Sachs, Accenture, PwC, EY, University of Oxford, UC Berkeley -->
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <div class="sb-logo-ph"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="3"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ 13. CLOSING ═══════════════ -->
 <div class="closing grid-dark">
   <div>
     <div class="closing-title">The transformation is already underway. Are your future hires ready?</div>
