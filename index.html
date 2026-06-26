@@ -16,7 +16,6 @@
   --purple: #9C2AB5;
 }
 body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #fff; line-height: 1; }
-
 .grid-dark {
   background-color: var(--dg);
   background-image: linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),
@@ -32,7 +31,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .sq { position: absolute; border-radius: 2px; }
 .serif-italic { font-family:'Playfair Display',serif; font-style:italic; font-weight:400; }
 .rule { width:48px; height:3px; background:currentColor; margin:18px 0 28px; }
-
 /* ══════════════════════════════════════
    INFO STRIP
 ══════════════════════════════════════ */
@@ -46,7 +44,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .info-lbl { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#AAA; margin-bottom:7px; }
 .info-val { font-size:22px; font-weight:700; color:#1A1A1A; line-height:1; }
 .info-sep { width:9px; height:9px; border-radius:2px; flex-shrink:0; }
-
 /* ══════════════════════════════════════
    1. COVER
 ══════════════════════════════════════ */
@@ -58,7 +55,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .cover-bottom { padding:40px 40px 52px; flex:1; display:flex; flex-direction:column; justify-content:flex-end; position:relative; z-index:2; }
 .cover-title { font-family:'Press Start 2P',monospace; font-size:30px; color:var(--yellow); line-height:1.6; margin-bottom:20px; }
 .cover-desc { font-size:15px; color:rgba(255,255,255,0.7); line-height:1.75; max-width:560px; }
-
 /* ══════════════════════════════════════
    2. PROBLEM
 ══════════════════════════════════════ */
@@ -79,7 +75,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .sb4 { background:var(--cyan); }
 .sb4 .sn { color:var(--dg); opacity:0.8; }
 .sb4 .st { color:var(--dg); opacity:0.85; }
-
 /* ══════════════════════════════════════
    3. DEMAND IS CLEAR  (slightly understated — introducing is the hero)
 ══════════════════════════════════════ */
@@ -88,7 +83,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .demand-h .hi { font-family:'Playfair Display',serif; font-style:italic; font-weight:400; color:var(--yellow); }
 .demand-rule { width:48px; height:3px; background:rgba(255,255,255,0.25); margin:22px 0; }
 .demand-sub { font-size:16px; color:rgba(255,255,255,0.5); }
-
 /* ══════════════════════════════════════
    4. JD TABLE
 ══════════════════════════════════════ */
@@ -114,37 +108,30 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .pp  { color:#C57FE0; border-color:rgba(197,127,224,.35); background:rgba(197,127,224,.08); }
 .py  { color:#F5CF55; border-color:rgba(245,207,85,.35);  background:rgba(245,207,85,.08); }
 .ppk { color:#FAA0B8; border-color:rgba(250,160,184,.35); background:rgba(250,160,184,.08); }
-
 /* ══════════════════════════════════════
    5. INTRODUCING  (THE HERO SECTION — most impactful)
 ══════════════════════════════════════ */
 .intro { padding:72px 64px; position:relative; overflow:hidden; }
-
 .intro-kicker { font-size:11px; font-weight:700; letter-spacing:3.5px; text-transform:uppercase; color:var(--green); margin-bottom:16px; }
-
 .intro-headline { line-height:1.0; margin-bottom:6px; }
 .intro-headline-top { font-size:56px; font-weight:700; color:var(--dg); line-height:1.05; display:block; }
 .intro-headline-bot { display:flex; align-items:baseline; gap:16px; }
 .intro-pixel { font-family:'Press Start 2P',monospace; font-size:28px; color:var(--yellow); }
 .intro-serif { font-family:'Playfair Display',serif; font-style:italic; font-size:72px; color:var(--green); line-height:0.9; }
-
 .intro-rule { width:48px; height:3px; background:var(--dg); margin:22px 0 20px; }
 .intro-body { font-size:16px; line-height:1.75; color:#555; max-width:620px; margin-bottom:0; }
 .intro-body strong { color:var(--dg); font-weight:600; }
-
 .logos-heading { font-size:16px; font-weight:700; color:var(--dg); margin-bottom:16px; }
 .logos-row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:44px; }
 .logo-circle { width:66px; height:66px; border-radius:50%; border:1.5px solid rgba(0,72,34,0.12); display:flex; align-items:center; justify-content:center; background:white; overflow:hidden; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.07); }
 .logo-circle img { width:40px; height:40px; object-fit:contain; }
 .logo-circle .logo-fb { font-size:10px; font-weight:700; color:var(--dg); text-align:center; line-height:1.3; padding:4px; }
-
 .cities-heading { font-size:16px; font-weight:700; color:var(--dg); margin-bottom:16px; }
 .cities-strip { display:grid; grid-template-columns:repeat(4,1fr); border-radius:14px; overflow:hidden; }
 .city { position:relative; height:230px; overflow:hidden; }
 .city img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.65) saturate(1.1); transition:filter .3s; }
 .city:hover img { filter:brightness(0.75) saturate(1.2); }
 .city-name { position:absolute; bottom:14px; left:16px; font-size:17px; font-weight:700; color:white; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
-
 /* ══════════════════════════════════════
    6. SIX STREAMS  (moved above path)
 ══════════════════════════════════════ */
@@ -159,7 +146,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .stream-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--yellow); margin-bottom:8px; }
 .stream-title { font-size:17px; font-weight:700; color:white; margin-bottom:10px; line-height:1.3; }
 .stream-desc { font-size:13px; color:rgba(255,255,255,0.48); line-height:1.65; }
-
 /* ══════════════════════════════════════
    7. STRUCTURED PATH
 ══════════════════════════════════════ */
@@ -179,7 +165,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .tl-texts { display:grid; grid-template-columns:repeat(4,1fr); }
 .tl-text { padding:0 6px; font-size:13px; color:#555; line-height:1.65; }
 .tl-text strong { color:var(--dg); font-weight:600; }
-
 /* ══════════════════════════════════════
    8. CURRICULUM
 ══════════════════════════════════════ */
@@ -199,7 +184,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .curric-body { font-size:14px; line-height:1.7; }
 .cb1 .curric-body, .cb3 .curric-body { color:rgba(255,255,255,0.7); }
 .cb2 .curric-body { color:rgba(0,40,20,0.75); }
-
 /* ══════════════════════════════════════
    9. GENAI TOOLS
 ══════════════════════════════════════ */
@@ -217,7 +201,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .tp  { color:#C57FE0; border-color:rgba(197,127,224,.3); background:rgba(197,127,224,.07); }
 .tc  { color:#7DD6F0; border-color:rgba(125,214,240,.3); background:rgba(125,214,240,.07); }
 .tpk { color:#FAA0B8; border-color:rgba(250,160,184,.3); background:rgba(250,160,184,.07); }
-
 /* ══════════════════════════════════════
    10. INDUSTRY PARTNERS
 ══════════════════════════════════════ */
@@ -231,7 +214,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 .pb-icon { flex-shrink:0; width:48px; height:48px; color:var(--dg); }
 .pb-title { font-size:20px; font-weight:700; color:#1A1A1A; line-height:1.2; }
 .pb-body { font-size:14px; color:#555; line-height:1.75; max-width:320px; }
-
 /* ══════════════════════════════════════
    11. STUDENT OUTCOMES STRIP
 ══════════════════════════════════════ */
@@ -250,7 +232,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
   white-space:nowrap;
 }
 .outcomes-note { font-size:15px; color:#888; line-height:1.6; max-width:480px; }
-
 /* ══════════════════════════════════════
    12. CLOSING
 ══════════════════════════════════════ */
@@ -265,7 +246,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
 </style>
 </head>
 <body>
-
 <!-- ═══════════════ 1. COVER ═══════════════ -->
 <div class="cover grid-dark">
   <div class="sq" style="width:38px;height:38px;background:var(--yellow);top:72px;left:64px;z-index:3;"></div>
@@ -289,8 +269,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     <div class="cover-desc">A highly selective, multi-geography AI Master's program, co-designed in partnership with global leaders in AI, to prepare the next generation of AI practitioners with one goal: to hire them.</div>
   </div>
 </div>
-
-
 <!-- ═══════════════ 2. PROBLEM ═══════════════ -->
 <section class="problem grid-light">
   <div class="sq" style="width:28px;height:28px;background:var(--dg);opacity:.12;top:44px;right:72px;"></div>
@@ -320,8 +298,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════ 3. DEMAND IS CLEAR ═══════════════ -->
 <section class="demand grid-dark">
   <div class="demand-h">
@@ -331,8 +307,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
   <div class="demand-rule"></div>
   <div class="demand-sub">These are some live job postings from world's leading AI companies</div>
 </section>
-
-
 <!-- ═══════════════ 4. JD TABLE ═══════════════ -->
 <section class="jd-sec grid-dark">
   <div class="jd-block">
@@ -380,13 +354,10 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </table>
   </div>
 </section>
-
-
 <!-- ═══════════════ 5. INTRODUCING (HERO SECTION) ═══════════════ -->
 <section class="intro grid-light">
   <div class="sq" style="width:28px;height:28px;background:var(--purple);top:36px;right:56px;"></div>
   <div class="sq" style="width:20px;height:20px;background:var(--green);opacity:.25;bottom:200px;right:90px;"></div>
-
   <div class="intro-kicker">Introducing</div>
   <div class="intro-headline">
     <span class="intro-headline-top">The Tetr</span>
@@ -397,7 +368,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
   </div>
   <div class="intro-rule"></div>
   <p class="intro-body">An <strong>18-month fellowship</strong>, co-built with pioneering AI organizations, so fellows join the workforce as proven practitioners.</p>
-
   <!-- Program details strip -->
   <div class="info-strip">
     <div class="info-item">
@@ -425,8 +395,10 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
       <div class="info-val">January 2027</div>
     </div>
   </div>
-
-  <div class="logos-heading">Curriculum Co-Designed With:</div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;">
+    <div class="logos-heading" style="margin-bottom:0;">Curriculum Co-Designed With:</div>
+    <div style="font-size:12px;font-style:italic;color:#BBBBBB;font-weight:400;">Discussions in progress</div>
+  </div>
   <!-- Replace each src="..." below with your own logo image file paths -->
   <div class="logos-row">
     <div class="logo-circle"><img src="openai.png" alt="OpenAI"></div>
@@ -437,7 +409,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     <div class="logo-circle"><img src="anthropic.png" alt="Anthropic"></div>
     <div class="logo-circle"><img src="mistral.png" alt="Mistral"></div>
   </div>
-
   <div class="cities-heading">Spread Across <span class="serif-italic">Three Global Markets</span></div>
   <div class="cities-strip">
     <div class="city">
@@ -458,8 +429,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════ 6. SIX STREAMS ═══════════════ -->
 <section class="streams grid-dark">
   <div class="streams-eyebrow">Specialisations</div>
@@ -538,8 +507,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════ 7. STRUCTURED PATH ═══════════════ -->
 <section class="path grid-light">
   <div class="sq" style="width:28px;height:28px;background:var(--pink);top:36px;right:56px;"></div>
@@ -567,8 +534,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════ 8. CURRICULUM ═══════════════ -->
 <section class="curric grid-light">
   <div class="sq" style="width:24px;height:24px;background:var(--green);opacity:.15;top:36px;right:72px;"></div>
@@ -591,7 +556,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-
 <!-- ═══════════════ 10. INDUSTRY PARTNERS ═══════════════ -->
 <section class="partners grid-light">
   <div class="sq" style="width:32px;height:32px;background:var(--purple);top:36px;right:56px;"></div>
@@ -645,8 +609,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════ 11. STUDENT OUTCOMES (WIP) ═══════════════ -->
 <section class="partners grid-light" style="padding-top:0;">
   <div class="outcomes-inner">
@@ -656,8 +618,6 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════ 12. CLOSING ═══════════════ -->
 <div class="closing grid-dark">
   <div>
@@ -670,6 +630,5 @@ body { font-family: 'IBM Plex Sans', sans-serif; color: #1A1A1A; background: #ff
     <div class="closing-note">Tetr · AI Fellowship · 2026<br>Confidential — prepared for prospective partners</div>
   </div>
 </div>
-
 </body>
 </html>
